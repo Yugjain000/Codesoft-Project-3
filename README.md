@@ -1,43 +1,54 @@
 # Codesoft-Project-3
 
-# Tic-Tac-Toe AI 🎮
+# Simple Movie Recommendation System
 
-A modern, visually stunning web-based implementation of the classic Tic-Tac-Toe game featuring an unbeatable AI opponent.
+This project contains two simple implementations of recommendation systems in Python. It serves as an educational starting point to understand how different recommendation algorithms work.
 
-## 🌟 Features
+## Features
 
-- **Unbeatable AI:** The AI uses the Minimax algorithm enhanced with Alpha-Beta pruning to ensure it plays a perfect game every time. You can only draw or lose!
-- **Modern UI:** Designed with a rich "Glassmorphism" aesthetic, featuring frosted glass panels, deep slate backgrounds, and vibrant neon accents.
-- **Micro-animations:** Smooth transitions, hover effects, and satisfying "pop" animations when placing markers.
-- **Player Selection:** Choose whether you want to play first as 'X' or second as 'O'. The AI instantly adapts.
-- **Responsive Design:** Fully playable on both desktop and mobile screens.
+This repository includes two different approaches to recommending movies:
 
-## 🛠️ Technologies Used
+1. **Collaborative Filtering (`collaborative_filtering.py`)**:
+   - **Type**: User-Based Collaborative Filtering.
+   - **How it works**: It finds users who have similar tastes to you by calculating the Euclidean distance between your ratings and theirs. It then recommends movies that those similar users rated highly, but you haven't seen yet.
+   - **Dependencies**: None (Pure Python).
 
-- **HTML5:** For the structure of the game board and UI elements.
-- **CSS3:** For styling, Flexbox/Grid layouts, custom properties (variables), and advanced animations (backdrop-filter for glassmorphism).
-- **Vanilla JavaScript (ES6+):** For the core game logic, DOM manipulation, and AI algorithm implementation. No external frameworks or libraries are used.
+2. **Content-Based Filtering (`content_based_filtering.py`)**:
+   - **Type**: Item-Based Content Filtering.
+   - **How it works**: It looks at the properties of the items themselves (in this case, movie genres and plot descriptions). It uses TF-IDF to process the text and calculates the Cosine Similarity between movies. If you like a specific movie, it recommends other movies with similar descriptions.
+   - **Dependencies**: `pandas`, `scikit-learn`.
 
-## 🧠 How the AI Works
+## Prerequisites
 
-The game's AI is powered by the **Minimax Algorithm**, a decision rule used in artificial intelligence, decision theory, game theory, and statistics for minimizing the possible loss for a worst-case scenario.
+To run the content-based filtering script, you will need to install a few external libraries. You can do this using `pip`:
 
-To ensure the AI responds instantly, **Alpha-Beta Pruning** is applied on top of the Minimax algorithm. This optimization reduces the number of nodes evaluated by the algorithm in its search tree, completely skipping branches that won't yield a better result than previously evaluated moves.
+```bash
+pip install -r requirements.txt
+```
 
-## 🚀 How to Run
+*(Note: The collaborative filtering script requires no external installations and runs on standard Python.)*
 
-Since this is a vanilla frontend application, you do not need to install any dependencies or run a build step.
+## Usage
 
-1. Clone or download this repository.
-2. Navigate to the project folder.
-3. Simply double-click the `index.html` file to open it in your default web browser.
+You can run either script directly from your terminal or command prompt.
 
-## 🎮 How to Play
+**To run the Collaborative Filtering script:**
+```bash
+python collaborative_filtering.py
+```
 
-1. Open the game in your browser.
-2. Select whether you want to play as **X (First)** or **O (Second)** using the toggle at the top.
-3. Click on any empty cell on the 3x3 grid to place your marker.
-4. Try to get 3 of your markers in a row (horizontally, vertically, or diagonally).
-5. If the board fills up without a winner, the game is a Draw.
-6. Click **Restart Game** to play again.
+**To run the Content-Based Filtering script:**
+```bash
+python content_based_filtering.py
+```
 
+### Experimenting with Your Own Data
+
+Both scripts use small, hardcoded dummy datasets to make it easy to understand the core concepts without dealing with complex data loading. 
+
+Feel free to open the files in your text editor and modify the `user_ratings` dictionary (for collaborative filtering) or the `data` dictionary (for content-based filtering) to add your own users, movies, and ratings!
+
+## Future Improvements
+- Integrate larger, real-world datasets (e.g., MovieLens).
+- Implement a Hybrid Recommendation System that combines both collaborative and content-based approaches.
+- Add a user interface (CLI or Web UI).
